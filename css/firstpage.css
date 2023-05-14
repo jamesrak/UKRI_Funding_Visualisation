@@ -1,0 +1,472 @@
+#cover-page {
+    height: 100vh;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+#arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 40px solid white;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flash 2s linear infinite;
+}
+
+
+
+#intro-page {
+
+    background: url('pics/urban_greening.gif') center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    position: relative;
+    background-size: cover;
+    height: 100vh;
+
+}
+
+#intro-page::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(74, 85, 76, 0.35);
+
+    z-index: 1;
+}
+
+
+
+.intro-text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    font-size: 1.5em;
+    width: 80%;
+
+}
+
+.intro-text h1 {
+    color: #BFCFFF;
+    font-size: 2.5em;
+    margin-bottom: 70px;
+    text-shadow: 3px 3px 8px rgba(10, 186, 245, 0.742);
+    ;
+}
+
+.intro-text p {
+    color: #BFCFFF;
+    font-size: 1.4em;
+    text-shadow: 2px 2px 5px rgba(38, 38, 37, 0.78);
+
+}
+
+@font-face {
+    font-family: Oxanium;
+    font-style: normal;
+    font-weight: 400;
+    src: url(Oxanium.woff2) format('woff2');
+}
+
+.get-started {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #00ffd2;
+    color: #f8ef02;
+    border: none;
+    font-size: 1.5em;
+    font-family: Oxanium, sans-serif;
+    cursor: pointer;
+    animation: neon 1s ease-in-out infinite alternate;
+    z-index: 3;
+}
+
+@keyframes neon {
+    from {
+        text-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #00f, 0 0 40px #ff00de;
+    }
+
+    to {
+        text-shadow: 0 0 20px #00f, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 60px #ff00de;
+    }
+}
+
+
+#ukri-page {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    background: url('pics/ukribackground.jpeg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.text-container.text-container {
+    transform: translateY(-40px);
+    /* Adjust the value as necessary */
+    flex: 1;
+    max-width: 45%;
+    padding: 0 2em;
+}
+
+.video-container {
+    flex: 1;
+    max-width: 45%;
+    padding: 0 2em;
+
+}
+
+iframe {
+    width: 100%;
+    height: 400px;
+}
+
+.text-container h1 {
+    color: #fff;
+    font-size: 2.5em;
+
+}
+
+.text-container p {
+    color: #fff;
+    font-size: 1.1em;
+
+}
+
+.text-container a {
+    color: #007BFF;
+    /* Change this to your preferred color */
+    text-decoration: none;
+}
+
+.text-container a:hover {
+    color: #0056b3;
+
+}
+
+#ukri-arrow {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 40px solid white;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flash 2s linear infinite;
+}
+
+.our-focus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    justify-content: space-between;
+    background-color: #DFFFF9;
+
+}
+
+.short-line {
+    display: inline-block;
+    width: 175px;
+    height: 3px;
+    background-color: rgb(222, 184, 135);
+    margin-right: 20px;
+    vertical-align: middle;
+    margin-left: 20px;
+
+}
+
+.title h2 {
+    font-family: "Courier New";
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding: 0 50px;
+    margin-bottom: 0;
+
+}
+
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    padding-top: 20px;
+}
+
+
+.text {
+    font-size: 1.5rem;
+
+}
+
+.text .questions {
+    list-style-type: none;
+    padding: 10px;
+    margin-left: px;
+}
+
+.text .questions li {
+    margin-bottom: 10px;
+    list-style-type: disc;
+    white-space: nowrap;
+}
+
+.overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #F7F7F7;
+    padding-top: 20px;
+    background: url('pics/ovbg.jpeg') no-repeat center center fixed;
+}
+
+.title,
+.header {
+    grid-column: span 2;
+    /* Make these elements span both columns */
+    justify-self: auto;
+    /* Stretch to fill the full width of the grid */
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.header {
+    margin-top: 30px;
+    background-color: #222;
+    color: #fff;
+    padding: 10px;
+}
+
+.header h2 {
+    font-family: "Calibri";
+    font-size: 2rem;
+    margin: 0;
+    text-transform: none;
+}
+
+.main-text {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.line {
+    width: 100%;
+    /* adjust as needed */
+    border: 0;
+    height: 1px;
+    background: #dcef2f;
+    /* adjust color as needed */
+    margin-bottom: 10px;
+    /* adjust as needed */
+}
+
+.sub-text {
+    font-size: 1rem;
+    /* adjust as needed */
+    font-style: italic;
+    /* adjust as needed */
+}
+
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* Space out the blue boxes */
+}
+
+.project-info h3 {
+    margin-top: 30px;
+    background-color: rgb(0, 200, 255);
+    color: #fff;
+    padding: 8px;
+    flex: 1;
+    /* Make the boxes take up equal width */
+    margin: 20px;
+    /* Add some space around the boxes */
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.chart-container {
+    width: 60%;
+    padding: 10px;
+
+}
+
+.explanation {
+    width: 35%;
+    font-size: 22;
+
+}
+
+.my-block {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px;
+    justify-content: space-between;
+    max-width: 1200px;
+    /* adjust this to your liking */
+    margin: 0 auto;
+}
+
+
+.text-container,
+.image-container {
+    flex: 1;
+    padding: 20px;
+}
+
+.my-block h3 {
+    font-size: 1.3rem;
+}
+
+.my-block p {
+    color: #008080;
+}
+
+
+
+
+
+.divider {
+    height: 2px;
+    margin: 10px 0;
+}
+
+.about-us {
+    background-color: #F7F7F7;
+    height: 400px;
+    padding-top: 20px;
+}
+
+.member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.member h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #222;
+
+}
+
+#menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    /* Make the menu transparent when not hovered over */
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 10;
+    transition: all 0.5s ease;
+    width: 80px;
+    height: 50px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu:hover {
+    background: rgba(38, 38, 37, 0.6);
+    /* Make the menu opaque when hovered over */
+    width: 120px;
+    height: 240px;
+    /* Make the menu wider when hovered over */
+}
+
+#menu i {
+    display: block;
+    /* Show the icon by default */
+    color: #1cf2e3;
+    /* Set icon color to white */
+}
+
+#menu:hover i {
+    display: none;
+    /* Hide the icon when the menu is being hovered over */
+}
+
+#menu ul {
+    display: none;
+    /* Hide the menu items by default */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#menu:hover ul {
+    display: block;
+    /* Show the menu items when the menu is being hovered over */
+}
+
+#menu ul li {
+    padding: 5px;
+}
+
+#menu ul li a {
+    color: #fff;
+    text-decoration: none;
+
+}
+#menu ul li ul li {
+        padding-left: 20px;
+        /* Add a bit more padding before sublinks */
+    }
