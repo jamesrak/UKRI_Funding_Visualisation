@@ -8,8 +8,16 @@
     <!-- Import Mapbox GL JS -->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- Import Google Chart -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- Import CSS -->
     <link href="./css/style_innovate_map.css" rel="stylesheet" />
+    <!-- Import Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Import jquery-csv -->
+    <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script>
+    <script src="./js/node_modules/jquery-csv/src/jquery.csv.js"></script>
+
     <style>
         /* body {
             margin: 0;
@@ -41,14 +49,11 @@
             <hr width="100%" />
             <p class='emphasis'>#Projects: 3,261</p>
             <p class='emphasis'>Award Offered (£): 724,625,187</p>
-            <p class='emphasis'>Project Funded by Sector</p>
-            <!-- Pie Chart -->
-            <p>[Pie Chart]</p>
-            <br> <br> <br> <br><br> <br> 
-            <p class='emphasis'>Most Funded Projects</p>
+            <p class='emphasis'>Project Funded Over Time</p>
+            <!-- Line Chart -->
+            <div id="funded_by_year_chart" style="width: 100%; height: 30%"></div>
             <!-- Table -->
-            <p>[Table]</p>
-            <br> <br> <br> <br><br> <br>
+            <!-- <div id="funded_table"></div> -->
             <!-- Insight -->
             <p class='emphasis'><span style="font-size:100%;color:yellow;">&starf;</span> Insights</p>
             <p>In 2021, Innovate UK awarded funding to over 3,000 projects, with a total value of £724 million. They allocated a large budget for supporting innovations in Manufacturing, Materials & Mobility, Disruptive technology and Ageing Society, Health & Nutrition. The most funded project is ONEheart by Airbus. It got 15 million pounds for supporting their innovations in efficiently air transport.</p>
@@ -56,6 +61,10 @@
     </div>
     <div id='map'></div>
     <div class="map-overlay" id="legend"><p>Sector</p></div>
+    <div class = 'table-bottom'>
+        <p class='table-title'>▣ Top Funded Projects</p>
+        <div id="funded_table"></div>
+    </div>
     </div>
     <script src="./js/script_innovate_map.js"></script>
 </body>
