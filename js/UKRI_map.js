@@ -5,10 +5,10 @@ var mapbox_style_url = "mapbox://styles/mapbox/dark-v11"
 mapboxgl.accessToken = 'pk.eyJ1IjoibXVyYXQ5MyIsImEiOiJjbGNybzAyZTEwaG1rM3BwZHRwZ210NXNqIn0.DCt_EmK0IBm90J5-s_8Jtw';
 google.charts.load('current', { packages: ['corechart', 'table'] });
 var csvData;
-d3.csv("./Data/ukri.csv").then(function(data) {
+d3.csv("./data/ukri.csv").then(function(data) {
     csvData = data;
 });
-d3.csv("./Data/projects.csv").then(function(data) {
+d3.csv("./data/projects.csv").then(function(data) {
     csvData2 = data;
 });
 
@@ -80,17 +80,17 @@ function drawTopProjectsTable(data, universityName) {
     dataTable.addColumn('string', 'UKRI Council');
     universityData.forEach(project => dataTable.addRow([project["Project Title"], parseInt(project["Award Value (£k)"]), project["FY Decision Date"].split('-')[0], project["UKRI Council"]]));
 
-    // Define table options
     var options = {
         width: '100%',
         height: '100%',
         page: 'enable',
-		pageSize: 10,
+        pageSize: 10,
         alternatingRowStyle: false,
         showRowNumber: true,
         cssClassNames: {
             headerRow: 'tableHeaderRow',
             tableRow: 'tableRow',
+            headerCell: 'blackHeader'
         },
     }
 
@@ -99,6 +99,43 @@ function drawTopProjectsTable(data, universityName) {
     table.draw(dataTable, options);
 };
 
+
+function drawTopProjectsAcrossAll(data) {
+    // Sort by award value in descending order
+    var sortedData = [...data];
+    sortedData.sort((a, b) => parseInt(b["Award Value (£k)"]) - parseInt(a["Award Value (£k)"]));
+
+    // Get top 10 projects
+    var topProjects = sortedData.slice(0, 10);
+
+    // Create the data table.
+    var dataTable = new google.visualization.DataTable();
+    dataTable.addColumn('string', 'Project Title');
+    dataTable.addColumn('number', 'Award Value (£k)');
+    dataTable.addColumn('string', 'Year');
+    dataTable.addColumn('string', 'UKRI Council');
+    dataTable.addColumn('string', 'Organisation');
+    topProjects.forEach(project => dataTable.addRow([project["Project Title"], parseInt(project["Award Value (£k)"]), project["FY Decision Date"].split('-')[0], project["UKRI Council"], project["Organisation"]]));
+
+    // Define table options
+    var options = {
+        width: '100%',
+        height: '100%',
+        page: 'enable',
+        pageSize: 10,
+        alternatingRowStyle: false,
+        showRowNumber: true,
+        cssClassNames: {
+            headerRow: 'tableHeaderRow',
+            tableRow: 'tableRow',
+            headerCell: 'blackHeader'
+        },
+    }
+
+    // Instantiate and draw the table.
+    var table = new google.visualization.Table(document.getElementById('funded_table'));
+    table.draw(dataTable, options);
+}
 
 
 
@@ -144,13 +181,18 @@ function drawPieChart(selectedYear) {
       // Set chart options
       var options = {
         title: "Funding Allocation by Council and Year",
-        is3D: true,
+        is3D: false,
         backgroundColor: 'transparent',
         chartArea: {
-          backgroundColor: 'transparent'
+          backgroundColor: 'transparent',
         },
-        titleTextStyle: { color: '#FFFFFF' }
-      };
+        titleTextStyle: { color: '#FFFFFF' },
+        width: 400,  // Modify this as per requirement
+        height: 400,  // Modify this as per requirement
+        legend: { textStyle: { color: '#FFFFFF' } } 
+    };
+    
+      
   
       // Instantiate and draw the chart, passing in the options.
       var chart = new google.visualization.PieChart(document.getElementById("piechart"));
@@ -183,14 +225,16 @@ function drawPieChart(selectedYear) {
     // Set chart options
     var options = {
         title: "Funding Acceptance Rate for " + universityName,
-        is3D: true,
+        is3D: false,
         backgroundColor: 'transparent',
         chartArea: {
-          backgroundColor: 'transparent'
+            backgroundColor: 'transparent',
+            width: '70%', // control the width of the chart area
+            height: '70%' // control the height of the chart area
         },
         legend: { 
             position: 'bottom',
-            textStyle: { color: 'white' } // Add this line
+            textStyle: { color: 'white' }
         },
         titleTextStyle: { color: '#FFFFFF' }
     };
@@ -250,18 +294,38 @@ function drawFundingLineChart(data, universityName) {
     // Set chart options
     var options = {
         title: "Funding Acceptance Rate for " + universityName,
-        is3D: true,
+        is3D: false,
         backgroundColor: 'transparent',
         chartArea: {
-          backgroundColor: 'transparent'
+            left: '10%', // adjust as needed
+            top: '10%', // adjust as needed
+            width: '50%', // adjust as needed
+            height: '50%', // adjust as needed
+            backgroundColor: 'transparent'
         },
         legend: { 
             position: 'right',
-            textStyle: { color: 'white' } // Add this line
+            alignment: 'start',
+            textStyle: { 
+                color: 'white', 
+                fontSize: 12
+            } 
         },
-        titleTextStyle: { color: '#FFFFFF' }
-    };
+        titleTextStyle: { color: '#FFFFFF' },
+        
+        vAxis: {
+            textStyle: {
+                color: '#FFFFFF'
+            }
+        },
 
+        vAxis: {
+            textStyle: {
+                color: '#FFFFFF'
+            }
+        }
+    };
+    
 
 
 // Instantiate and draw the chart, passing in the options.
@@ -281,8 +345,78 @@ chart.draw(data, options);
     chart.draw(data, options);
 };
 
+$.get("./Data/ukri.csv", function (csvString) {
+    var arrayData = $.csv.toArrays(csvString, { onParseValue: $.csv.hooks.castToScalar });
+    var universityLocation = {};
+    var universityList = $("#university-list");  // Grab reference to the datalist element
 
-  
+    // A JavaScript Set only stores unique values
+    var uniqueUniversities = new Set();
+
+    // Skip the header row
+    for (var i = 1; i < arrayData.length; i++) {
+        var row = arrayData[i];
+        var university = row[2]; //assuming 3rd column is University
+        var latitude = row[11]; //assuming 12th column is Latitude
+        var longitude = row[12]; //assuming 13th column is Longitude
+
+        universityLocation[university] = [latitude, longitude];
+
+        // Only add the university to the Set if it's not already present
+        if (!uniqueUniversities.has(university)) {
+            uniqueUniversities.add(university);
+
+            // Add the university as an option to the datalist
+            var option = document.createElement('option');
+            option.value = university;
+            universityList.append(option);
+        }
+    }
+
+    // Store the map for future reference
+    universityLocations = universityLocation;
+});
+
+
+var universityLocations = {};
+$.get("./Data/ukri.csv", function (csvString) {
+    universityLocations = parseCSVToMapUniversityLocation(csvString);
+});
+
+function parseCSVToMapUniversityLocation(csvString) {
+    var arrayData = $.csv.toArrays(csvString, { onParseValue: $.csv.hooks.castToScalar });
+    var universityLocation = {};
+
+    // Skip the header row
+    for (var i = 1; i < arrayData.length; i++) {
+        var row = arrayData[i];
+        var university = row[2]; //assuming 3rd column is University
+        var longitude = row[11]; //assuming 12th column is Latitude
+        var latitude  = row[12]; //assuming 13th column is Longitude
+
+        universityLocation[university] = [latitude, longitude];
+    }
+
+    return universityLocation;
+}
+
+
+$("#search-btn").click(function() {
+    var universityName = $("#university-search").val();
+    var latLng = universityLocations[universityName];
+
+    if (latLng) {
+        // Set new center to the map
+        map.flyTo({ 
+            center: latLng,
+            zoom: 12  // specify the desired zoom level here
+        });
+        
+    } else {
+        alert("University not found");
+    }
+});
+
 
 map.on('load', function () {
     // Add a new layer for your data points
@@ -305,27 +439,28 @@ map.on('load', function () {
         var selectedCouncil = $("#Councilname").val();
         var selectedYear = $("#year").val();
 
-        drawPieChart(selectedCouncil, selectedYear);
+        drawPieChart(selectedYear);
     });
 
 
     $(document).ready(function(){
         // draw initial pie chart and table on page load
         drawPieChart("All");
-      
+        drawTopProjectsAcrossAll(csvData2);
+    
         $("#overview").click(function(){
           // draw the pie chart and table again when the "overview" button is clicked
           drawPieChart("All");
-
-           // Show the pie chart, year choice and draw chart button
+          drawTopProjectsAcrossAll(csvData2);
+          // Show the pie chart and the year dropdown and draw button
             $("#piechart").show();
             $("#year").show();
             $("#draw-chart").show();
-    
-    // You might also want to redraw the pie chart here
-    drawPieChart(selectedCouncil, selectedYear);
+
+          $("#acceptance-piechart").hide();
+          $("#funding-linechart").hide();
         });
-      });
+    });
       
 
     ///////////////////// POP-UP ///////////////////////////
@@ -377,6 +512,11 @@ map.on('load', function () {
         drawFundingAcceptancePieChart(csvData, organisationName);
         drawFundingLineChart(csvData, organisationName);
         drawTopProjectsTable(csvData2, organisationName);
+    
+
+        // Show the university specific charts
+        $("#acceptance-piechart").show();
+        $("#funding-linechart").show();
 
 
         $("#piechart").hide();
