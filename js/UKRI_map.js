@@ -351,7 +351,7 @@ chart.draw(data, options);
     chart.draw(data, options);
 };
 
-$.get("./Data/ukri.csv", function (csvString) {
+$.get("./data/ukri.csv", function (csvString) {
     var arrayData = $.csv.toArrays(csvString, { onParseValue: $.csv.hooks.castToScalar });
     var universityLocation = {};
     var universityList = $("#university-list");  // Grab reference to the datalist element
@@ -385,7 +385,7 @@ $.get("./Data/ukri.csv", function (csvString) {
 
 
 var universityLocations = {};
-$.get("./Data/ukri.csv", function (csvString) {
+$.get("./data/ukri.csv", function (csvString) {
     universityLocations = parseCSVToMapUniversityLocation(csvString);
 });
 
