@@ -84,7 +84,7 @@ function drawTopProjectsTable(data, universityName) {
         width: '100%',
         height: '100%',
         page: 'enable',
-        pageSize: 10,
+        pageSize: 20,
         alternatingRowStyle: false,
         showRowNumber: true,
         cssClassNames: {
@@ -106,7 +106,7 @@ function drawTopProjectsAcrossAll(data) {
     sortedData.sort((a, b) => parseInt(b["Award Value (£k)"]) - parseInt(a["Award Value (£k)"]));
 
     // Get top 10 projects
-    var topProjects = sortedData.slice(0, 10);
+    var topProjects = sortedData.slice(0, 20);
 
     // Create the data table.
     var dataTable = new google.visualization.DataTable();
@@ -122,7 +122,7 @@ function drawTopProjectsAcrossAll(data) {
         width: '100%',
         height: '100%',
         page: 'enable',
-        pageSize: 10,
+        pageSize: 20,
         alternatingRowStyle: false,
         showRowNumber: true,
         cssClassNames: {
@@ -282,18 +282,24 @@ function drawFundingLineChart(data, universityName) {
     var councils = Array.from(new Set(universityData.map(row => row["Councilname"])));
     councils.forEach(council => data.addColumn("number", council + " Funding"));
 
-    // Add the data rows
-    for (var year in fundingData) {
+    // Define the order of years
+var orderedYears = ["2015-16", "2016-17", "2017-18", "2018-19", "2019-20"];
+
+// Add the data rows
+for (var i = 0; i < orderedYears.length; i++) {
+    var year = orderedYears[i];
+    if(year in fundingData) {
         var row = [year, fundingData[year].total];
         councils.forEach(council => {
             row.push(fundingData[year][council] || 0);
         });
         data.addRow(row);
     }
+}
 
     // Set chart options
     var options = {
-        title: "Funding Acceptance Rate for " + universityName,
+        title: "Funding Recieved " + universityName,
         is3D: false,
         backgroundColor: 'transparent',
         chartArea: {
@@ -319,7 +325,7 @@ function drawFundingLineChart(data, universityName) {
             }
         },
 
-        vAxis: {
+        hAxis: {
             textStyle: {
                 color: '#FFFFFF'
             }
