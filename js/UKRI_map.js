@@ -147,7 +147,7 @@ function drawTopProjectsAcrossAll(data) {
 
 function drawPieChart(selectedYear) {
     // grab the CSV
-    $.get("./Data/ukri.csv", function (csvString) {
+    $.get("./data/ukri.csv", function (csvString) {
       // Parse CSV data and get the data grouped by CouncilName and Year
       var groupedData = parseCSVGroupedByCouncilYear(csvString);
   
