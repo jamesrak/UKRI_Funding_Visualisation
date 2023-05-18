@@ -153,7 +153,7 @@ google.charts.load('current', {'packages':['corechart','table']});
 
 			options = {
 				page: 'enable',
-				pageSize: 5,
+				pageSize: 4,
 				showRowNumber: true,
 				allowHtml: true,
 				cssClassNames: {
@@ -254,4 +254,32 @@ map.on('load', function(){
 	item.appendChild(value);
 	legend.appendChild(item);
 	});
+
+    // Create the bubble size legend
+    var legendContainer = document.getElementById('bubble-legend');
+    var legendItems = [
+      { size: 1, label: '£ 1 K' },
+	  { size: 10, label: '£ 5 M' },
+	  { size: 20, label: '£ 50 M' },
+      { size: 25, label: '£ 100 M' },
+    ];
+
+    legendItems.forEach(function(item) {
+      var legendItem = document.createElement('div');
+      legendItem.className = 'bubble-legend-item';
+
+      var legendItemColor = document.createElement('div');
+      legendItemColor.className = 'bubble-legend-item-color';
+      legendItemColor.style.backgroundColor = 'rgb(255, 20, 103)';
+	  legendItemColor.style.borderRadius = '50%';
+      legendItemColor.style.width = item.size + 'px';
+      legendItemColor.style.height = item.size + 'px';
+
+      var legendItemLabel = document.createElement('div');
+      legendItemLabel.textContent = item.label;
+
+      legendItem.appendChild(legendItemColor);
+      legendItem.appendChild(legendItemLabel);
+      legendContainer.appendChild(legendItem);
+    });
 });
