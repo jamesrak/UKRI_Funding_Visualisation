@@ -16,6 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
 </head>
+
 <body>
     <script src="js/firstpage.js"></script>
     <div id="menu">
@@ -59,12 +60,12 @@
 
     <div id="ukri-page">
         <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/I8i4fOv-XqE" title="UKRI Stories"
-                frameborder="0"
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/I8i4fOv-XqE"
+                title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
         </div>
-        <div class="text-container">
+        <div class="ukri-text-container">
             <h1>What is UKRI</h1>
             <p>The United Kingdom Research and Innovation (UKRI) is a non-departmental public body of the UK government,
                 responsible for funding research and innovation across a wide range of disciplines. UKRI operates across
@@ -101,7 +102,6 @@
                 <span class="short-line"></span>
             </h2>
 
-
             <div class="content">
 
                 <div class="text" style="width: 90%;">
@@ -121,7 +121,10 @@
                     </ul>
                 </div>
             </div>
+
         </div>
+
+
     </section>
 
     <section class="container-fluid overview" id="overview">
@@ -151,66 +154,73 @@
 
                 </div>
 
-                <div class="row">
-                    <div class="chart-container">
-                        <canvas id="barChart1"></canvas>
-                    </div>
-                    <div class="explanation">
-                        <p>This chart showcases the concentration of research activities in the UK. A closer
-                            look reveals that the University College London and The University of Oxford are
-                            the
-                            most active research centers, with 876 and 800 funded projects respectively.
-                            This
-                            level
-                            of activity could imply a robust and diverse research environment at these
-                            institutions.
-                        </p>
-                    </div>
-                </div>
 
                 <div class="row">
-                    <div class="chart-container">
-                        <canvas id="barChart2"></canvas>
+                    <div class="chart-block">
+                        <div class="chart-container">
+                            <canvas id="barChart1"></canvas>
+                        </div>
+                        <div class="explanation">
+                            <p>This chart showcases the concentration of research activities in the UK. A closer
+                                look reveals that the University College London and The University of Oxford are
+                                the
+                                most active research centers, with 876 and 800 funded projects respectively.
+                                This
+                                level
+                                of activity could imply a robust and diverse research environment at these
+                                institutions.
+                            </p>
+                        </div>
                     </div>
-                    <div class="explanation">
-                        <p>This chart allows us to observe the financial landscape of research funding.
-                            Interestingly, the University College London not only leads in the number of
-                            projects,
-                            but also in the total amount of funding received. This suggests that they might
-                            be
-                            involved in more costly, large-scale projects. It's also noteworthy that the
-                            distribution of funds isn't
-                            strictly proportional to the number of projects, indicating that different
-                            projects
-                            and
-                            research areas have varied funding needs.</p>
-                    </div>
-                </div>
 
+                    <div class="chart-block">
+                        <div class="chart-container">
+                            <canvas id="barChart2"></canvas>
+                        </div>
+                        <div class="explanation">
+                            <p>This chart allows us to observe the financial landscape of research funding.
+                                Interestingly, the University College London not only leads in the number of
+                                projects,
+                                but also in the total amount of funding received. This suggests that they might
+                                be
+                                involved in more costly, large-scale projects. It's also noteworthy that the
+                                distribution of funds isn't
+                                strictly proportional to the number of projects, indicating that different
+                                projects
+                                and
+                                research areas have varied funding needs.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="link-blocks">
+                <a href="UKRI.html" class="link-block">
+                    <div class="image-container">
+                        <img src="pics/previewuniversity.png" alt="Block image 1">
+                    </div>
+                    <h3>UKRI University Funding Map</h3>
+                </a>
+                <a href="university_research_profile.html" class="link-block">
+                    <div class="image-container">
+                        <img src="pics/unidashboard.png" alt="Block image 2">
+                    </div>
+
+                    <h3>University Research Profile</h3>
+
+                </a>
             </div>
 
-            <!-- block here! -->
-            <div class="row my-block">
-                <div class="text-container">
-                    <h3>University Funding Distribution</h3>
-                    <p>The rapid expansion of digital solutions has seen a significant shift in the way societies
-                        function, from communication to commerce, education to entertainment</p>
-                    <!-- More text here -->
-                    <p>click the map to see the detail</p>
-                </div>
-                <div class="image-container">
-                    <a href="./.html" target="_blank">
-                        <img src="pics/urban_greening.gif" class="img-fluid rounded" alt="Unimap">
-                    </a>
-                </div>
-            </div>
+
+
+
 
             <div class="divider"></div>
 
             <div class="container" id="industry">
                 <div class="header">
                     <h2>
-                        <span class="main-text"></span>UKRI Innovate Projects Funding</span>
+                        <span class="main-text">UKRI Innovate Projects Funding</span>
                         <hr class="line" />
                         <span class="sub-text">Since 2004 to 2023</span>
                     </h2>
@@ -224,99 +234,182 @@
                     </div>
                 </div>
 
+                <div class="sectoroverview">
+                    <br>
+                    <h1>Learn More about Each Sector</h1>
+                </div>
+
+                <div class="sectors-container">
+                    <div class="sector">
+                        <img src="pics/1.jpg" alt="Sector 1" />
+                        <div class="sector-intro">
+                            <h2 class="sector-title">
+                              Manufacturing
+                                Materials &
+                                Mobility</h2>
+                                <br>
+                                <br>
+                                <p>UK-funded sector of manufacturing materials and mobility refers to a specific area of
+                                    manufacturing industry that involves the production of materials and components used
+                                    in transportation systems. Some examples of products that are produced within this
+                                    sector include lightweight materials for vehicles, such as carbon fiber composites,
+                                    and advanced propulsion systems, such as electric and hybrid
+                                    powertrains.</p>
+                                    
+                                    <p><br><strong style="font-size: 1.2rem;">
+                                        Past Five Years: <br />Project Number 11.2 Billion<br>  Award Offered 3.1 Billion
+                                    </strong></p>
+                        </div>
+                    </div>
+            
+                    <div class="sector">
+                        <img src="pics/2.jpg" alt="Sector 2" />
+                        <div class="sector-intro">
+                            <h2 class="sector-title">AI & Data Economy</h2>
+                            <br>
+                            <br>
+                                <p>The UK-funded sector of AI and data economy refers to a specific area of the economy
+                                    that involves the development and application of artificial intelligence (AI) and
+                                    data analytics technologies.Some examples of applications for AI and data analytics
+                                    within this sector include personalized marketing and advertising, fraud detection,
+                                    predictive maintenance, and supply chain optimization.</p>
+                                    
+                                    <p><br><strong style="font-size: 1.2rem;">
+                                        Past Five Years:<br /> Project Number 1.4 Billion<br>  Award Offered 31 Million
+                                    </strong></p>
+                        </div>
+                    </div>
+            
+                    <div class="sector">
+                        <img src="pics/3.jpg" alt="Sector 3" />
+                        <div class="sector-intro">
+                            <h2 class="sector-title">Clean Growth & Infastructure</h2>
+                            <br>
+                            <br>
+                            <p>The UK-funded sector of Clean Growth & Infrastructure refers to a specific area of
+                                the economy that involves the development and implementation of technologies,
+                                products and services that promote clean growth and sustainable development. This
+                                includes a wide range of activities such as renewable energy, energy efficiency,
+                                waste management, sustainable transport, and low-carbon buildings.</p>
+                                <p><br><strong style="font-size: 1.2rem;">
+                                    Past Five Years:<br/> Project Number 4.5 Billion<br>  Award Offered 1 Billion</strong></p>
+                        </div>
+                    </div>
+            
+            
+                    <div class="sector">
+                        <img src="pics/5.jpg" alt="Sector 4" />
+                        <div class="sector-intro">
+                             <h2 class="sector-title">Ageing Society & Health  Nutrition</h2>
+                             <br>
+                             <br>
+                                <p>The UK-funded sector of ageing society, health & nutrition refers to a specific area
+                                of the economy that involves the development and delivery of products and services
+                                that promote healthy ageing and improve the health and well-being of citizens. This
+                                includes a wide range of activities such as healthcare, nutrition, social care, and
+                                assistive technologies.</p>
+                                
+                                <p><br><strong style="font-size: 1.2rem;">
+                                    Past Five Years: <br />Project Number 5.9 Billion<br>  Award Offered 1.3 Billion
+                                </strong></p>
+                        </div>
+                    </div>
+            
+                    <div class="sector">
+                        <img src="pics/2.webp" alt="Sector 5" />
+                        <div class="sector-intro">
+                            <h2 class="sector-title">Disruptive Technology</h2>
+                            <br>
+                            <br>
+                                <p>The UK-funded sector of disruptive innovations refers to a specific area of the
+                                    economy that involves the development and application of innovative technologies,
+                                    products, and services that have the potential to disrupt existing markets and
+                                    create new ones. This includes a wide range of activities such as artificial
+                                    intelligence, blockchain, robotics, quantum computing, and nanotechnology.</p>
+                                    
+                                    <p><br><strong style="font-size: 1.2rem;">
+                                        Past Five Years:<br /> Project Number 31.9 Billion<br>  Award Offered 1.29 Billion
+                                    </strong></p>
+                        </div>
+                    </div>
+                
+                    
+                </div>
+
 
                 <div class="row">
-                    <div class="chart-container" , style="position: relative; height:70vh; width:50vw">
-                        <canvas id="pieChart1"></canvas>
+                    <div class="chart-block">
+                        <div class="chart-container" , style="position: relative; height:70vh; width:50vw">
+                            <canvas id="pieChart1"></canvas>
+                        </div>
+                        <div class="explanation">
+                            <p>This pie chart represents the distribution of projects across different research
+                                themes. From this chart, we can infer that 'Disruptive Technology' and
+                                'Manufacturing,
+                                Materials & Mobility' are the most explored research areas, accounting for more
+                                than
+                                60%
+                                of the projects. This suggests a strong focus on technological innovation and
+                                industrial
+                                application within the funded projects. </p>
+                        </div>
                     </div>
-                    <div class="explanation">
-                        <p>This pie chart represents the distribution of projects across different research
-                            themes. From this chart, we can infer that 'Disruptive Technology' and
-                            'Manufacturing,
-                            Materials & Mobility' are the most explored research areas, accounting for more
-                            than
-                            60%
-                            of the projects. This suggests a strong focus on technological innovation and
-                            industrial
-                            application within the funded projects. </p>
-                    </div>
-                </div>
 
 
-                <div class="row">
-                    <div class="chart-container" , style="position: relative; height:70vh; width:50vw">
-                        <canvas id="pieChart2"></canvas>
-                    </div>
-                    <div class="explanation">
-                        <p>This pie chart depicts the funding distribution among the same research themes.
-                            Here, we see a significant shift. While 'Disruptive Technology' had the highest
-                            number
-                            of projects, it does not receive the most funding. Instead, 'Manufacturing,
-                            Materials &
-                            Mobility' takes the largest share of the funding, followed by 'Ageing Society,
-                            Health &
-                            Nutrition' and 'Clean Growth & Infrastructure'. This suggests that while
-                            disruptive
-                            technologies may be numerous, they might be less capital-intensive than projects
-                            in
-                            other areas.</p>
+                    <div class="chart-block">
+                        <div class="chart-container" , style="position: relative; height:70vh; width:50vw">
+                            <canvas id="pieChart2"></canvas>
+                        </div>
+                        <div class="explanation">
+                            <p>This pie chart depicts the funding distribution among the same research themes.
+                                Here, we see a significant shift. While 'Disruptive Technology' had the highest
+                                number
+                                of projects, it does not receive the most funding. Instead, 'Manufacturing,
+                                Materials &
+                                Mobility' takes the largest share of the funding, followed by 'Ageing Society,
+                                Health &
+                                Nutrition' and 'Clean Growth & Infrastructure'. This suggests that while
+                                disruptive
+                                technologies may be numerous, they might be less capital-intensive than projects
+                                in
+                                other areas.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
-            <div class="row my-block">
-                <div class="image-container">
-                    <a href="./.html" target="_blank">
-                        <img src="pics/urban_greening.gif" class="img-fluid rounded" alt="" id="sector_submap">
-                    </a>
-                </div>
-                <div class="text-container">
-                    <h3>Know More About Each Sector</h3>
-                    <p>The rapid expansion of digital solutions has seen a significant shift in the way societies
-                        function, from communication to commerce, education to entertainment</p>
-                    <!-- More text here -->
-                    <p>click the gif to see the detail</p>
-                </div>
+            <div class="link-blocks">
+                <a href="innovate_map.html" class="link-block">
+                    <div class="image-container">
+                        <img src="pics/previewinnovative.png" alt="Block image 1">
+                    </div>
+                    <h3>UKRI Innovative Funding Map</h3>
+                </a>
+                <a href="innovative_research_profile.html" class="link-block">
+                    <div class="image-container">
+                        <img src="pics/innovativedashboard.png" alt="Block image 2">
+                    </div>
+                    <h3>Innovative Research Profile</h3>
+                </a>
             </div>
-
-
             <div class="row my-block">
-                <div class="text-container">
-                    <h3>Funding Distribution in Industry</h3>
-                    <p>The rapid expansion of digital solutions has seen a significant shift in the way societies
-                        function, from communication to commerce, education to entertainment</p>
-                    <!-- More text here -->
-                    <p>click the map to see the detail</p>
-                </div>
-                <div class="image-container">
-                    <a href="./.html" target="_blank">
-                        <img src="css/pics/urban_greening.gif" class="img-fluid rounded" alt="" id="industry_submap">
+                <div class="image-block">
+                    <a href="innovate_map_comparison.html" target="_blank">
+                        <div class="image-container">
+                            <img src="pics/comparison.png" class="submap" alt="" id="comparison_submap">
+                        </div>
                     </a>
                 </div>
-
-            </div>
-
-
-            <div class="row my-block">
-                <div class="image-container">
-                    <a href="./.html" target="_blank">
-                        <img src="css/pics/urban_greening.gif" class="submap" alt="" id="comparison_submap">
-                    </a>
-                </div>
-                <div class="text-container">
+                <div class="text-block">
                     <h3>Comparison Map 2011 to 2021</h3>
-                    <p>The rapid expansion of digital solutions has seen a significant shift in the way societies
-                        function, from communication to commerce, education to entertainment</p>
-                    <!-- More text here -->
-                    <p>click the map to see the detail</p>
+                    <br>
+                    <p>Click the map to see the detail</p>
+
                 </div>
             </div>
         </div>
 
-
     </section>
-
+    
     <section class="container-fluid case-study" id="case-study">
         <div class="row title">
             <h2>
@@ -325,9 +418,17 @@
                 <span class="short-line"></span>
             </h2>
         </div>
-        <div class="row">
-
+        <div class="row my-block">
+        
+            <div class="image-block" style="margin-right:20px">
+                <a href="case_study.html" target="_blank">
+                    <div class="image-container">
+                        <img src="pics/casestudy.png" class="submap" alt="" id="comparison_submap">
+                    </div>
+                </a>
+            </div>
         </div>
+
     </section>
 
     <section class="container-fluid about-us" id="about-us">
@@ -340,20 +441,28 @@
         </div>
         <div class="row">
             <div class="col-md-3 member">
-                <img src="member1.jpg" alt="Member 1">
-                <h3>Zuqi Dong</h3>
+                <div class="member-profile">
+                    <img src="pics/zuqi.jpeg" alt="Member 1">
+                    <h3>Zuqi Dong</h3>
+                </div>
             </div>
             <div class="col-md-3 member">
-                <img src="member2.jpg" alt="Member 2">
-                <h3>Danming Cao</h3>
+                <div class="member-profile">
+                    <img src="pics/danming.jpeg" alt="Member 2">
+                    <h3>Danming Cao</h3>
+                </div>
             </div>
             <div class="col-md-3 member">
-                <img src="member3.jpg" alt="Member 3">
-                <h3>James Nutthaphol</h3>
+                <div class="member-profile">
+                    <img src="pics/james.jpg" alt="Member 3">
+                    <h3>James (Nutthaphol Rakratchatakul)</h3>
+                </div>
             </div>
             <div class="col-md-3 member">
-                <img src="member4.jpg" alt="Member 4">
-                <h3>Tom Murat</h3>
+                <div class="member-profile">
+                    <img src="pics/tom.jpg" alt="Member 4">
+                    <h3>Tom Murat</h3>
+                </div>
             </div>
         </div>
     </section>
