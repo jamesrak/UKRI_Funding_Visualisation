@@ -1,3 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 #cover-page {
     height: 100vh;
     display: flex;
@@ -48,46 +58,45 @@
 
 }
 
-#intro-page::after {
+
+#intro-page .intro-text::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(74, 85, 76, 0.35);
-
+    top: -10px;
+    bottom: -55px;
+    left: -10px;
+    right: -10px;
+    background: rgba(0, 0, 0, 0.35);
     z-index: 1;
-}
-
-
+} 
 
 .intro-text {
-    position: absolute;
+    position: relative;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     width: 80%;
-
 }
 
-.intro-text h1 {
-    color: #BFCFFF;
+.intro-text h1{
+    position: relative;
+    z-index: 3;
+    color: #ffffff;
+    text-shadow:2px 2px 4px rgba(0, 0, 0, 0.5);
     font-size: 2.5em;
-    margin-bottom: 70px;
-    text-shadow: 3px 3px 8px rgba(10, 186, 245, 0.742);
-    ;
+    margin-bottom: 60px;
 }
-
 .intro-text p {
-    color: #BFCFFF;
+    position: relative;
+    z-index: 3;
+    color: #ffffff;
+    text-shadow:1px 1px 3px rgba(0, 0, 0, 0.5);
     font-size: 1.4em;
-    text-shadow: 2px 2px 5px rgba(38, 38, 37, 0.78);
-
 }
+
 
 @font-face {
     font-family: Oxanium;
@@ -102,23 +111,24 @@
     left: 50%;
     transform: translateX(-50%);
     padding: 10px 20px;
-    background-color: #00ffd2;
-    color: #f8ef02;
+    background-color: #ffffff;
+    color: #000000;
     border: none;
     font-size: 1.5em;
     font-family: Oxanium, sans-serif;
     cursor: pointer;
     animation: neon 1s ease-in-out infinite alternate;
     z-index: 3;
+    border-radius: 10px;
 }
 
 @keyframes neon {
     from {
-        text-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #00f, 0 0 40px #ff00de;
+        text-shadow: 0 0 10px rgb(22, 139, 206), 0 0 20px rgb(75, 194, 212), 0 0 30px rgb(0, 183, 255), 0 0 40px #ff00de;
     }
 
     to {
-        text-shadow: 0 0 20px #00f, 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 60px #ff00de;
+        text-shadow: 0 0 20px  rgb(0, 183, 255), 0 0 30px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 60px #ff00de;
     }
 }
 
@@ -133,46 +143,53 @@
     background-size: cover;
 }
 
-.text-container.text-container {
+
+
+.ukri-text-container{
     transform: translateY(-40px);
-    /* Adjust the value as necessary */
     flex: 1;
     max-width: 45%;
     padding: 0 2em;
+    z-index: 2;
+    background: rgba(90, 89, 89, 0.3); 
+    backdrop-filter: blur(5px); 
 }
 
 .video-container {
     flex: 1;
     max-width: 45%;
-    padding: 0 2em;
 
 }
 
 iframe {
     width: 100%;
-    height: 400px;
+    height: 45vh;
 }
 
-.text-container h1 {
-    color: #fff;
+.ukri-text-container h1 {
+    color:rgba(255, 255, 255);
     font-size: 2.5em;
-
+    margin-bottom: 20px;
+    z-index: 3;
+   
+}
+ .ukri-text-container p{
+    color: rgba(255, 255, 255);
+    font-size: 1.2em;
+    padding:10px;
+    z-index: 3;
+    
 }
 
-.text-container p {
-    color: #fff;
-    font-size: 1.1em;
-
-}
-
-.text-container a {
+.ukri-text-container a {
     color: #007BFF;
-    /* Change this to your preferred color */
     text-decoration: none;
+    z-index: 3;
 }
 
-.text-container a:hover {
+.ukri-text-container a:hover {
     color: #0056b3;
+    z-index: 3;
 
 }
 
@@ -198,6 +215,14 @@ iframe {
     background-color: #DFFFF9;
 
 }
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-left: auto; 
+    margin-right: auto; 
+}
 
 .short-line {
     display: inline-block;
@@ -216,6 +241,8 @@ iframe {
     text-transform: uppercase;
     padding: 0 50px;
     margin-bottom: 0;
+    margin-left: auto; 
+    margin-right: auto; 
 
 }
 
@@ -257,9 +284,7 @@ iframe {
 .title,
 .header {
     grid-column: span 2;
-    /* Make these elements span both columns */
     justify-self: auto;
-    /* Stretch to fill the full width of the grid */
 }
 
 .title {
@@ -291,20 +316,16 @@ iframe {
 
 .line {
     width: 100%;
-    /* adjust as needed */
     border: 0;
     height: 1px;
     background: #dcef2f;
-    /* adjust color as needed */
     margin-bottom: 10px;
-    /* adjust as needed */
+    
 }
 
 .sub-text {
     font-size: 1rem;
-    /* adjust as needed */
     font-style: italic;
-    /* adjust as needed */
 }
 
 
@@ -318,7 +339,6 @@ iframe {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    /* Space out the blue boxes */
 }
 
 .project-info h3 {
@@ -327,62 +347,236 @@ iframe {
     color: #fff;
     padding: 8px;
     flex: 1;
-    /* Make the boxes take up equal width */
     margin: 20px;
-    /* Add some space around the boxes */
+}
+.sectoroverview h1 { 
+    margin-left: 20px;
+    font-size: 2rem;
+
+}
+.sectors-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 0;
 }
 
+.sector {
+    flex: 1;
+    margin: 0;
+    position: relative;
+    height: 700px;
+    background-size: cover;
+    transform: scale(0.92); 
+    transition: transform 0.5s ease-in-out;
+}
+
+.sector img {
+    width: 100%;
+    height: 100%;
+}
+
+.sector:hover {
+    transform: scale(1); 
+}
+
+
+.sector-intro {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.96);
+    transition: all 0.3s ease-in-out;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sector:hover .sector-intro {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.sector-title {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.sector-title::before,
+.sector-title::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 150px;
+    background: white;
+    right: 50%;
+}
+
+.sector-title::before {
+    bottom: 100%;
+    margin-bottom: 10px;
+}
+
+.sector-title::after {
+    top: 100%;
+    margin-top: 10px;
+}
+
+.sector:hover .sector-title,
+.sector:hover .sector-desc {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.sector:hover .sector-title {
+    transition-delay: 0.3s;
+}
+
+.sector:hover .sector-desc {
+    transition-delay: 0.5s;
+}
 .row {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start; 
     margin-bottom: 50px;
 }
 
-.chart-container {
-    width: 60%;
-    padding: 10px;
+.chart-block {
+    width: 45%; 
+    height:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.chart-container {
+    width: 100%;
+    padding: 10px;
 }
 
 .explanation {
-    width: 35%;
-    font-size: 22;
-
+    width: 100%;
+    font-size: 0.9rem;
 }
-
-.my-block {
+.link-blocks {
     display: flex;
-    flex-wrap: wrap;
-    padding: 40px;
     justify-content: space-between;
-    max-width: 1200px;
-    /* adjust this to your liking */
-    margin: 0 auto;
+    padding: 20px 0;
+    align-items: center; 
+    flex-direction: row;
+    justify-content: center; 
 }
 
-
-.text-container,
-.image-container {
-    flex: 1;
+.link-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45%; 
+    height: 450px; 
+    background-color: #DFFFF9; 
+    text-decoration: none;
+    color: black; 
     padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 20px;
 }
 
-.my-block h3 {
-    font-size: 1.3rem;
+.link-block h3 {
+    margin-top: 10px;
 }
 
-.my-block p {
-    color: #008080;
+.link-block p {
+    text-align: center;
+}
+.image-container {
+    width: 100%;
+    height: 100%; /* Adjust as needed */
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-container:hover img {
+    transform: scale(1.1);
 }
 
 
 
+.row.my-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
 
+}
+
+.image-block {
+    flex: 2;
+    margin-left: 60px;
+}
+
+.text-block {
+    flex: 1;
+}
+
+.image-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 90%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-container:hover img {
+    transform: scale(1.1);
+}
+
+.text-block h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.text-block p {
+    color: rgb(6, 87, 6);
+    text-align: left;
+    font-size: 1.2rem;
+}
+ 
 
 .divider {
     height: 2px;
     margin: 10px 0;
+}
+
+.case-study{
+    background-color: #fffbc0;
+    padding-top: 20px;
+    height:1000px;
 }
 
 .about-us {
@@ -390,19 +584,29 @@ iframe {
     height: 400px;
     padding-top: 20px;
 }
+.member {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+}
+.member-profile {
+    text-align: center;
+}
 
 .member img {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
     border-radius: 50%;
+    margin-bottom: 20px;
 }
 
 .member h3 {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     color: #222;
-
+ 
 }
 
 #menu {
@@ -427,8 +631,8 @@ iframe {
 #menu:hover {
     background: rgba(38, 38, 37, 0.6);
     /* Make the menu opaque when hovered over */
-    width: 120px;
-    height: 240px;
+    width: 110px;
+    height: 250px;
     /* Make the menu wider when hovered over */
 }
 
@@ -441,12 +645,11 @@ iframe {
 
 #menu:hover i {
     display: none;
-    /* Hide the icon when the menu is being hovered over */
 }
+   
 
 #menu ul {
     display: none;
-    /* Hide the menu items by default */
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -454,7 +657,6 @@ iframe {
 
 #menu:hover ul {
     display: block;
-    /* Show the menu items when the menu is being hovered over */
 }
 
 #menu ul li {
@@ -466,7 +668,7 @@ iframe {
     text-decoration: none;
 
 }
+
 #menu ul li ul li {
-        padding-left: 20px;
-        /* Add a bit more padding before sublinks */
-    }
+    padding-left: 20px;
+}
