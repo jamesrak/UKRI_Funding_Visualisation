@@ -135,10 +135,25 @@ a {
 }
 
 
-.tableRow, .headerRow {
-    background-color: #000000;
-    color: #FFFFFF;
+.tableHeaderRow, .tableRow {
+    background-color: #000000; /* This sets the background to black */
+    color: #ffffff; /* This sets the font color to white */
 }
 
-/* Data Table */
+.blackHeader {
+    background-color: #000000; /* This sets the background to black */
+    color: #ffffff; /* This sets the font color to white */
+}
+
+#piechart {
+	float: left;
+  }
+
+.tableRow {
+    cursor: pointer;
+}
+
+.tableRow:hover {
+    background-color: #a49b9b; /* Replace with your desired hover color */
+}
 
