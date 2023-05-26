@@ -9,16 +9,23 @@ body {
 	color: #fff;
 }
 
+.container-right {
+	/* display: absolute; */
+	height: 100%;
+}
+
 
 /* Sidebar */
 
 .sidebar {
 	width: 35%;
+	/* height: 100%; */
 	padding: 20px;
 	padding-right:20px;
 	background-color: #242424;
 	font-size: 0.9em;
-	padding-bottom: 0px;
+	padding-bottom: 4px;
+	
 }
 
 .subtitle {
