@@ -65,6 +65,8 @@ function parseCSVGroupedByCouncilYear(csvString) {
     return groupedData;
 }
 
+
+
 function drawTopProjectsTable(data, universityName) {
     // Filter data for the given university
     var universityData = data.filter(row => row["Organisation"] == universityName);
@@ -137,17 +139,42 @@ function drawTopProjectsAcrossAll(data) {
     table.draw(dataTable, options);
 }
 
-
-
-
-
+// Function to parse the CSV data and group it by CouncilName and Year
+function parseCSVGroupedByCouncilYear(csvString) {
+    var lines = csvString.split('\n');
+    var headers = lines[0].split(',');
+  
+    var councilIndex = headers.indexOf('Council');
+    var yearIndex = headers.indexOf('Year');
+    var amountIndex = headers.indexOf('AmountAwarded');
+  
+    var groupedData = {};
+  
+    for (var i = 1; i < lines.length; i++) {
+      var row = lines[i].split(',');
+      var council = row[councilIndex];
+      var year = row[yearIndex];
+      var amount = parseFloat(row[amountIndex]);
+  
+      if (!groupedData[council]) {
+        groupedData[council] = {};
+      }
+      if (!groupedData[council][year]) {
+        groupedData[council][year] = 0;
+      }
+      groupedData[council][year] += amount;
+    }
+  
+    return groupedData;
+  }
+  
 
 
 
 
 function drawPieChart(selectedYear) {
     // grab the CSV
-    $.get("./data/ukri.csv", function (csvString) {
+    $.get("./Data/ukri.csv", function (csvString) {
       // Parse CSV data and get the data grouped by CouncilName and Year
       var groupedData = parseCSVGroupedByCouncilYear(csvString);
   
@@ -201,49 +228,61 @@ function drawPieChart(selectedYear) {
   }
 
 
-  function drawFundingAcceptancePieChart(data, universityName) {
+  function drawFundingAcceptancePieChart(data, universityName)  {
     // Filter data for the given university
     var universityData = data.filter(row => row["Organisation"] == universityName);
-
+  
     var totalApplications = 0;
     var totalAccepted = 0;
-
+  
     universityData.forEach(row => {
-        totalApplications += parseInt(row["NumberofApplications"]);
-        totalAccepted += parseInt(row["NumberofAwards"]);
+      totalApplications += parseInt(row["NumberofApplications"]);
+      totalAccepted += parseInt(row["NumberofAwards"]);
     });
-
+  
     var totalRejected = totalApplications - totalAccepted;
-
+  
     // Create the data table.
-    var data = new google.visualization.DataTable();
-    data.addColumn("string", "Status");
-    data.addColumn("number", "Count");
-    data.addRow(["Accepted", totalAccepted]);
-    data.addRow(["Rejected", totalRejected]);
-
+    var dataTable = new google.visualization.DataTable();
+    dataTable.addColumn("string", "Status");
+    dataTable.addColumn("number", "Count");
+    dataTable.addRow(["Accepted", totalAccepted]);
+    dataTable.addRow(["Rejected", totalRejected]);
+  
     // Set chart options
     var options = {
-        title: "Funding Acceptance Rate for " + universityName,
-        is3D: false,
+      title: "Funding Acceptance Rate for " + universityName,
+      backgroundColor: 'transparent',
+      chartArea: {
         backgroundColor: 'transparent',
-        chartArea: {
-            backgroundColor: 'transparent',
-            width: '70%', // control the width of the chart area
-            height: '70%' // control the height of the chart area
-        },
-        legend: { 
-            position: 'bottom',
-            textStyle: { color: 'white' }
-        },
-        titleTextStyle: { color: '#FFFFFF' }
+        width: '70%', // control the width of the chart area
+        height: '70%' // control the height of the chart area
+      },
+      legend: { 
+        position: 'none'
+      },
+      titleTextStyle: { color: '#FFFFFF' },
+      colors: ['#00FF00', '#FF0000'], // Green for Accepted, Red for Rejected
+      hAxis: {
+        textStyle: {
+          color: '#FFFFFF' // White color for the axis labels
+        }
+      },
+  
+      vAxis: {
+        textStyle: {
+          color: '#FFFFFF' // White color for the axis labels
+        }
+      }
     };
-
+  
     // Instantiate and draw the chart, passing in the options.
-    var chart = new google.visualization.PieChart(document.getElementById("acceptance-piechart"));
-    chart.draw(data, options);
-}
-
+    var chart = new google.visualization.BarChart(document.getElementById("acceptance-piechart"));
+    chart.draw(dataTable, options);
+  }
+      
+      
+ 
 function drawFundingLineChart(data, universityName) {
     // Filter data for the given university
     var universityData = data.filter(row => row["Organisation"] == universityName);
@@ -424,6 +463,8 @@ $("#search-btn").click(function() {
 });
 
 
+
+
 map.on('load', function () {
     // Add a new layer for your data points
     map.addLayer({
@@ -531,8 +572,5 @@ map.on('load', function () {
         });
 
     
-
-    ///////////////////// LEGEND ////////////////////////////
-    // Make Legend
 
 });
